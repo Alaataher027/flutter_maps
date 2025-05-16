@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_maps/constants/strings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'generated/l10n.dart';
 
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
 
       child: MaterialApp(
+        locale: const Locale('en'),
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

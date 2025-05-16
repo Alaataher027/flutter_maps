@@ -21,5 +21,18 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "enter_number_warn": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم هاتفك!",
+    ),
+    "login_disc": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم هاتفك للتحقق من حسابك.",
+    ),
+    "login_title": MessageLookupByLibrary.simpleMessage("ما هو رقم هاتفك؟"),
+    "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "too_short_num_warn": MessageLookupByLibrary.simpleMessage(
+      "الرقم قصير جدًا ليكون رقم هاتف!",
+    ),
+    "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
+  };
 }

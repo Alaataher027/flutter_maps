@@ -22,11 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "almost_done": MessageLookupByLibrary.simpleMessage(
+      "You\'re almost done to get started, let\'s do it...",
+    ),
+    "done": MessageLookupByLibrary.simpleMessage("Done"),
     "enter_number_warn": MessageLookupByLibrary.simpleMessage(
       "Please Enter Your Phone Number!",
     ),
     "login_disc": MessageLookupByLibrary.simpleMessage(
-      "Please enter your phone number to verify\nyour account.",
+      "Please enter your phone number to verify your account.",
     ),
     "login_title": MessageLookupByLibrary.simpleMessage(
       "What is your phone number?",
@@ -36,5 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Too short for a phone number!",
     ),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+    "verify_your_phone": MessageLookupByLibrary.simpleMessage(
+      "Verify your phone number",
+    ),
   };
 }

@@ -65,10 +65,10 @@ class S {
     );
   }
 
-  /// `Please enter your phone number to verify\nyour account.`
+  /// `Please enter your phone number to verify your account.`
   String get login_disc {
     return Intl.message(
-      'Please enter your phone number to verify\nyour account.',
+      'Please enter your phone number to verify your account.',
       name: 'login_disc',
       desc: '',
       args: [],
@@ -103,6 +103,31 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Verify your phone number`
+  String get verify_your_phone {
+    return Intl.message(
+      'Verify your phone number',
+      name: 'verify_your_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You're almost done to get started, let's do it...`
+  String get almost_done {
+    return Intl.message(
+      'You\'re almost done to get started, let\'s do it...',
+      name: 'almost_done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message('Done', name: 'done', desc: '', args: []);
   }
 }
 
