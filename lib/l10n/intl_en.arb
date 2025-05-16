@@ -1,0 +1,8 @@
+{
+    "login_title": "What is your phone number?",
+    "login_disc": "Please enter your phone number to verify\nyour account.",
+    "next": "Next",
+    "verify" : "Verify",
+    "enter_number_warn" : "Please Enter Your Phone Number!",
+    "too_short_num_warn": "Too short for a phone number!"
+}
