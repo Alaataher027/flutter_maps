@@ -7,5 +7,6 @@
     "too_short_num_warn": "Too short for a phone number!",
     "verify_your_phone" : "Verify your phone number",
     "almost_done" : "You're almost done to get started, let's do it...",
-    "done" : "Done"
+    "done" : "Done",
+    "log_out" : "LogOut"
 }

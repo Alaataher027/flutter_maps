@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enter_number_warn": MessageLookupByLibrary.simpleMessage(
       "Please Enter Your Phone Number!",
     ),
+    "log_out": MessageLookupByLibrary.simpleMessage("LogOut"),
     "login_disc": MessageLookupByLibrary.simpleMessage(
       "Please enter your phone number to verify your account.",
     ),

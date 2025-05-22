@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_maps/constants/strings.dart';
-import 'package:flutter_maps/presentation/widgets/custom_button.dart';
-import 'package:flutter_maps/presentation/widgets/phoneFormField.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_maps/business_logic/cubits/auth_cubit/phone_auth_cubit.dart';
+import 'package:flutter_maps/helper/functions.dart';
+import '../../constants/strings.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/phoneFormField.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../generated/l10n.dart';
 
@@ -40,14 +43,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomButton(
                     title: S.of(context).next,
                     onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        otpScreen,
-                        arguments: phoneNumber,
-                      );
+                      // BlocProvider.of<PhoneAuthCubit>(
+                      //   context,
+                      // ).SubmitPhoneNumber(phoneNumber!);
+                      showProgressIndicator(context);
+                      _register(context);
                     },
                     width: 110,
                   ),
+
+                  _buildPhoneNumberSubmitedBloc(),
                 ],
               ),
             ),
@@ -55,6 +60,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _register(BuildContext context) async {
+    if (!phoneFormKey.currentState!.validate()) { /// if not valid
+      Navigator.pop(context);
+      return;
+    } else {
+      Navigator.pop(context);
+      phoneFormKey.currentState!.save();
+    }
+    BlocProvider.of<PhoneAuthCubit>(context).SubmitPhoneNumber(phoneNumber!);
   }
 
   Widget _buildIntroTexts(BuildContext context) {
@@ -80,7 +96,39 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
+
+  Widget _buildPhoneNumberSubmitedBloc() {
+    return BlocListener<PhoneAuthCubit, PhoneAuthState>(
+      // امته يعمل ليسن
+      listenWhen: (previous, current) {
+        // هيلسن لما الاستيت تتغير
+        return previous != current;
+      },
+      listener: (context, state) {
+        if (state is PhoneAuthLoading) {
+          showProgressIndicator(context);
+        }
+
+        if (state is PhoneNumberSubmitted) {
+          Navigator.pop(context); // من اللودينج
+          Navigator.pushReplacementNamed(context, otpScreen, arguments: phoneNumber);
+        }
+        if (state is PhoneAuthFailure) {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errMessage),
+              backgroundColor: Colors.black,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      },
+      child: Container(),
+    );
+  }
 }
+
 
 
 

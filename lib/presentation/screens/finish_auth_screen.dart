@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_maps/generated/l10n.dart';
-import 'package:flutter_maps/presentation/widgets/custom_button.dart';
+import 'package:flutter_maps/constants/strings.dart';
+import '../../generated/l10n.dart';
+import '../widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,36 +13,47 @@ class FinishAuthScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Container(
-          margin: EdgeInsets.only(
-            left: 32.h,
-            right: 32.h,
-            top: 150.h,
-            bottom: 88.h,
-          ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ).copyWith(top: 50.h, bottom: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                'assets/images/check_mark.svg',
-                height: 126.h,
-                width: 121.h,
-                fit: BoxFit.contain,
-              ),
-              SizedBox(height: 35.h),
-              Text(
-                S.of(context).almost_done,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 100.h),
+                      SvgPicture.asset(
+                        'assets/images/check_mark.svg',
+                        height: 126.h,
+                        width: 121.h,
+                        fit: BoxFit.contain,
+                      ),
+                      SizedBox(height: 35.h),
+                      Text(
+                        S.of(context).almost_done,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Spacer(),
+
               CustomButton(
                 title: S.of(context).done,
                 width: double.infinity,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, mapScreen);
+                },
               ),
             ],
           ),

@@ -129,6 +129,11 @@ class S {
   String get done {
     return Intl.message('Done', name: 'done', desc: '', args: []);
   }
+
+  /// `LogOut`
+  String get log_out {
+    return Intl.message('LogOut', name: 'log_out', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
